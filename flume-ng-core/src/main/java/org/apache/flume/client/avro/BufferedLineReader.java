@@ -34,7 +34,7 @@ public class BufferedLineReader implements LineReader {
   private BufferedReader reader;
 
   public BufferedLineReader(Reader in) {
-    reader = new BufferedReader(reader);
+    reader = new BufferedReader(in);
   }
 
   @Override
@@ -51,7 +51,7 @@ public class BufferedLineReader implements LineReader {
   public List<String> readLines(int n) throws IOException {
     List<String> out = Lists.newLinkedList();
     String line;
-    while((line = readLine()) != null && out.size() <= n) {
+    while((line = readLine()) != null && out.size() < n) {
       out.add(line);
     }
     return out;
